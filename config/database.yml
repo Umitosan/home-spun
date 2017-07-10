@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+
+development:
+  <<: *default
+  database: home-spun_development
+
+
+test:
+  <<: *default
+  database: home-spun_test
+
+production:
+  <<: *default
+  database: home-spun_production
+  username: home-spun
+  password: <%= ENV['HOME-SPUN_DATABASE_PASSWORD'] %>
