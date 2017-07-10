@@ -1,5 +1,17 @@
 <%= render "layouts/errors", :object => @product %>
 
 <%= form_for @product do |f| %>
-  <%= f.submit %>
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <br>
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+  <br>
+  <%= f.submit "Submit" %>
 <% end %>
