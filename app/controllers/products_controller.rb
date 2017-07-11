@@ -5,24 +5,24 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
   end
 
-  # def show
-  #   @product = Product.find(params[:id])
-  # end
+  def show
+    @product = Product.find(params[:id])
+  end
 
-  # def new
-  #   @product = Product.new
-  # end
-  #
-  # def create
-  #   @product = Product.new(product_params)
-  #   if @product.save
-  #   flash[:notice] = "Product successfully added!"
-  #     redirect_to  products_path
-  #   else
-  #     render :new
-  #   end
-  # end
-  #
+  def new
+    @product = Product.new
+  end
+  
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+    flash[:notice] = "Product successfully added!"
+      redirect_to  products_path
+    else
+      render :new
+    end
+  end
+
   # def edit
   #   @product = Product.find(params[:id])
   # end
