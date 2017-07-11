@@ -1,11 +1,14 @@
+include ActionView::Helpers::NumberHelper
+
 class ChargesController < ApplicationController
-  
+
   def new
+    @amount = number_to_currency(current_order.calculate_total)
   end
 
   def create
     # Amount in cents
-    @amount = 500
+    @formatted_sum  = current_order.calculate_total.to_i
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -14,7 +17,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount,
+      :amount      => @formatted_sum,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
