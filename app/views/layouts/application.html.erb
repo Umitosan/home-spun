@@ -9,8 +9,35 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
+    <div class="nav">
+      <ul>
+        <div class="nav-left">
+          <li class="home"><%= link_to "Home", root_path %></li>
+          <% if current_user %>
+            <li class="realms"><%= link_to "Products", products_path %></li>
+          <% end %>
+        </div>
+        <div class="nav-right">
+        <% if current_user %>
+            <li class="user">
+              <span class="email_label"><%= current_user.email %></span>
+              <% if is_admin? %>
+                <span class="admin_label">(ADMIN)</span>
+              <% end  %>
+            </li>
+            <li>  <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %> </li>
+        <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %> / <%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+        </div>
+      </ul>
+    </div>
+
+    <div class="container">
+      <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

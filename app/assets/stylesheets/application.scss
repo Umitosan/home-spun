@@ -14,3 +14,59 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+.container {
+
+}
+
+ // NAVBAR ////////////////////////////////////////////
+
+.nav {
+  margin-top: 10px;
+  height: 80px;
+}
+.nav-left {
+  float: left;
+}
+.nav-right {
+  float: right;
+  margin-right: 35px;
+}
+.admin_label {
+  color: #17444c;
+}
+.email_label {
+ font-size: 18px;
+}
+.nav ul {
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  border-bottom: solid lightgrey;
+  border-bottom-width: 2px;
+}
+.nav li {
+  display: inline;
+  font-family: 'Catamaran', sans-serif;
+  width: 120px;
+  border-bottom: none;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.nav a {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  transition: .3s background-color;
+}
+.nav a:hover {
+  /* width | style | color */
+  border-bottom: 3px solid #4f98a5;
+  border-radius: 5px;
+}

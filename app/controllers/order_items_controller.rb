@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
 
   def create
-    @account = Account.where(user_id: current_user.id).first
+    @account = current_account
     @order = current_order
     @item = @order.order_items.new(item_params)
     @order.account_id = @account.id
