@@ -16,6 +16,9 @@
           <% if current_user %>
             <li class="realms"><%= link_to "Products", products_path %></li>
           <% end %>
+          <% if current_user %>
+            <li class="realms"><%= link_to "My Cart", cart_path %></li>
+          <% end %>
         </div>
         <div class="nav-right">
         <% if current_user %>
