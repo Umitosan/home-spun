@@ -1,26 +1,25 @@
-<h1>Products</h1>
-
-<% if is_admin? %>
-  <%= link_to "New Product", new_product_path %>
-<% end %>
-
-<hr>
 <div class="row">
   <div class="col-sm-6">
-    <% @products.each do |product| %>
-     <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> | <%= number_to_currency(product.price, raise: true) %>
-      <% if current_user %>
-        <%= form_for @order_item, remote: true do |f| %>
-          <%= f.hidden_field :product_id, value: product.id %>
-          <%= f.number_field :quantity %>
-          <%= f.submit "Add to cart" %>
-        <% end %></p>
+    <div id="left-col">
+      <h1>Products</h1>
+      <% if is_admin? %>
+        <%= link_to "New Product", new_product_path %>
       <% end %>
-    <% end %>
+      <% @products.each do |product| %>
+       <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> | <%= number_to_currency(product.price, raise: true) %>
+        <% if current_user %>
+          <%= form_for @order_item, remote: true do |f| %>
+            <%= f.hidden_field :product_id, value: product.id %>
+            <%= f.number_field :quantity %>
+            <%= f.submit "Add to cart" %>
+          <% end %></p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm-6">
-    <div id="selected_product">
-      <%# append form with js here %>
+    <div id="right-col">
+      <%# partials here %>
     </div>
   </div>
 </div>
