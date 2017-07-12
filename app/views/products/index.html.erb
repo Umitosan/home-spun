@@ -5,15 +5,22 @@
 <% end %>
 
 <hr>
-<% @products.each do |product| %>
- <p><%= product.name %> | <%= number_to_currency(product.price, raise: true) %>
-
-  <% if current_user %>
-    <%= form_for @order_item do |f| %>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.number_field :quantity %>
-      <%= f.submit "Add to cart" %>
-    <% end %></p>
-  <% end %>
-
-<% end %>
+<div class="row">
+  <div class="col-sm-6">
+    <% @products.each do |product| %>
+     <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> | <%= number_to_currency(product.price, raise: true) %>
+      <% if current_user %>
+        <%= form_for @order_item do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.number_field :quantity %>
+          <%= f.submit "Add to cart" %>
+        <% end %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <div id="selected_product">
+      <%# append form with js here %>
+    </div>
+  </div>
+</div>

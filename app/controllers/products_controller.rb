@@ -7,12 +7,16 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to products_url }
+      format.js
+    end
   end
 
   def new
     @product = Product.new
   end
-  
+
   def create
     @product = Product.new(product_params)
     if @product.save

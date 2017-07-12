@@ -10,6 +10,7 @@
 
 
 User.destroy_all
+Account.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
 Product.destroy_all
@@ -28,16 +29,20 @@ testUser = User.create!(username: 'tuser1',
 )
 
 5.times do |j|
+  randPrice = (randPrice = rand(50..200) + (rand(0.01..0.99))).round(2)
   someProduct = Product.create!(name: Faker::HitchhikersGuideToTheGalaxy.planet,
                             description: Faker::HitchhikersGuideToTheGalaxy.quote,
-                            price: 199.99,
-                            image_url: 'http://lorempixel.com/800/400/abstract'
+                            price: randPrice,
+                            image_url: 'http://lorempixel.com/200/200/abstract'
 
   )
 end
 
 
+
+
 p "Created #{User.count} users"
+p "Created #{Account.count} accounts"
 p "Created #{Order.count} order items"
 p "Created #{OrderItem.count} order items"
 p "Created #{Product.count} products"
