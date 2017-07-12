@@ -19,7 +19,7 @@
           <% if current_user %>
             <li class="realms"><%= link_to "My Cart", cart_path %>
               <% if current_order %>
-                (<%= current_order_quantity %>)
+                <span id="cart_items_total">(<%= current_order_quantity %>)</span>
               <% else %>
                 (0)
               <% end %>

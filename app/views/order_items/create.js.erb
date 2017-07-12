@@ -1,0 +1,5 @@
+$("#cart_items_total").html("<%= j render(partial: 'create') %>");
+
+$("input#order_item_quantity").each(function( index ) {
+  $(this).val(null)
+});

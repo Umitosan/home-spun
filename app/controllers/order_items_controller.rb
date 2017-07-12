@@ -7,7 +7,10 @@ class OrderItemsController < ApplicationController
     @order.account_id = @account.id
     @order.save
     session[:order_id] = @order.id
-    redirect_to products_path
+    respond_to do |format|
+      format.html { redirect_to products_url }
+      format.js
+    end
   end
 
   def destroy
