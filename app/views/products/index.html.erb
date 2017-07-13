@@ -3,10 +3,11 @@
     <div id="left-col">
       <h1>Products</h1>
       <% if is_admin? %>
-        <%= link_to "New Product", new_product_path %>
+        <%= link_to "New Product", new_product_path  %>
       <% end %>
       <% @products.each do |product| %>
-       <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> | <%= number_to_currency(product.price, raise: true) %>
+       <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> |
+                                              <%= number_to_currency(product.price, raise: true) %>
         <% if current_user %>
           <%= form_for @order_item, remote: true do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
@@ -19,7 +20,7 @@
   </div>
   <div class="col-sm-6">
     <div id="right-col">
-      <%# partials here %>
+      <%= render 'order_items/show' %>
     </div>
   </div>
 </div>

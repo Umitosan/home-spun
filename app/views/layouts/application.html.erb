@@ -13,11 +13,9 @@
       <ul>
         <div class="nav-left">
           <li class="home"><%= link_to "Home", root_path %></li>
+          <li class="products"><%= link_to "Products", products_path %></li>
           <% if current_user %>
-            <li class="products"><%= link_to "Products", products_path %></li>
-          <% end %>
-          <% if current_user %>
-            <li class="realms"><%= link_to "My Cart", cart_path, remote: true %>
+            <li class="carts"><%= link_to "My Cart", cart_path, remote: true %>
               <% if current_order %>
                 <span id="cart_items_total">(<%= current_order_quantity %>)</span>
               <% else %>

@@ -27,4 +27,13 @@ class ApplicationController < ActionController::Base
     return quantity
   end
 
+protected
+
+  def authorize
+    if !current_user.admin
+      flash[:alert] = "you aren't and admin"
+      redirect_to '/'
+    end
+  end
+
 end

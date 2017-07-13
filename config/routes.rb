@@ -3,15 +3,20 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :home, only: [:index]
 
+  resources :accounts do
+    resources :orders
+  end
+
+  # resources :accounts
+
+  # resources :orders do
+  #   resources :order_items
+  # end
+  resources :order_items
+
   resources :products do
     resources :comments
   end
-
-  resources :order_items
-
-  resources :accounts
-
-  resources :orders
 
   resource :cart, only: [:show]
 
