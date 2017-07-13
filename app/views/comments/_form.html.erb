@@ -1,0 +1,8 @@
+<%= render "layouts/errors", :object => @comment %>
+
+<%= form_for [@product, @comment], remote: true do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
