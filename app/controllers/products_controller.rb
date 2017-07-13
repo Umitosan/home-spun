@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    respond_to do |format|
+      format.html { redirect_to products_url }
+      format.js
+    end
   end
 
   def create
@@ -32,6 +36,10 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    respond_to do |format|
+      format.html { redirect_to products_url }
+      format.js
+    end
   end
 
   def update

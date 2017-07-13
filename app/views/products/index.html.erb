@@ -3,11 +3,17 @@
     <div id="left-col">
       <h1>Products</h1>
       <% if is_admin? %>
-        <%= link_to "New Product", new_product_path  %>
+        <%= link_to "New Product", new_product_path, remote: true %>
       <% end %>
+      <br>
+      <br>
       <% @products.each do |product| %>
        <p><%= link_to product.name, product_path(product), id: "product_link", remote: true %> |
-                                              <%= number_to_currency(product.price, raise: true) %>
+        <% if is_admin? %>
+          <%= link_to 'Edit', edit_product_path(product), remote: true %>
+        <% end %>
+        <br>
+        <%= number_to_currency(product.price, raise: true) %>
         <% if current_user %>
           <%= form_for @order_item, remote: true do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>

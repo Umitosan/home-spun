@@ -6,13 +6,12 @@
 
 <%= link_to "New Comment", new_product_comment_path(@product, @comment), remote: true %><br>
 
-<div id="comment_form"> 
+<div id="comment_form">
 </div>
 <% @product.comments.each do |comment| %>
   <%= comment.description %>
   <br>
 <% end %>
-
 
 <% if is_admin? %>
     <p><%= link_to "Edit", edit_product_path(@product) %></p>

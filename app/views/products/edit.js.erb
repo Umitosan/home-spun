@@ -1,0 +1,14 @@
+$('#right-col').html("<%= j render(partial: 'edit') %>");
+
+let post_id = $('#hidden_product_id').data('value');
+
+let path = "/products/" + post_id;
+
+$("#product_name").on('input', function() {
+  let inputText = $(this).val();
+  $('a[href="' + path + '"]').text(inputText);
+});
+
+$( "#product_name" ).change(function() {
+  <%# binding.pry %>
+});
